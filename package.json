@@ -10,6 +10,7 @@
     "@types/node": "^16.18.14",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
     "dotenv": "^16.0.3",
     "exceljs": "^4.3.0",
     "react": "^18.2.0",
@@ -21,10 +22,11 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "test": "vite test",
+    "eject": "vite eject",
     "lint": "eslint --ext .ts,.tsx ./src",
     "fix": "yarn format && yarn lint:fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
@@ -59,6 +61,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
     "prettier": "^2.8.4",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.2.1"
   }
 }

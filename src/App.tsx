@@ -1,12 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { ExceljsDownload } from "feature/exceljs";
+import { ExceljsDownload } from "@/feature/exceljs";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <div className="h-52 w-52">
+          <img className="h-12 w-12 App-logo" src={logo} alt="logo" />
+        </div>
         <ExceljsDownload />
       </header>
     </div>

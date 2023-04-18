@@ -1,7 +1,25 @@
 import ExcelJS from "exceljs";
 import { useFetchData } from "./hook/useFetchData";
 
-const excelCreate = async (data: any) => {
+export type PropsType = {
+  items: {
+    headers: [
+      {
+        header: string;
+        key: string;
+      }
+    ];
+    body: [
+      {
+        id: number;
+        title: string;
+        author: string;
+      }
+    ];
+  };
+};
+
+const excelCreate = async (data: PropsType) => {
   // workbookを作成
   const workbook = new ExcelJS.Workbook();
   // worksheetを追加
@@ -9,14 +27,9 @@ const excelCreate = async (data: any) => {
   // worksheetを取得
   const worksheet = workbook.getWorksheet("シート名");
   // 各列のヘッダー
-  worksheet.columns = [
-    { header: "ID", key: "id" },
-    { header: "タイトル", key: "title" },
-    { header: "誰", key: "author" },
-  ];
-
+  worksheet.columns = data.items.headers;
   // 各行のデータ（worksheet.columnsのkeyがオブジェクトのキーと同じになる）
-  worksheet.addRows(data);
+  worksheet.addRows(data.items.body);
   // xlsxの場合
   const excel = await workbook.xlsx.writeBuffer();
 
@@ -32,8 +45,11 @@ export const ExceljsDownload = () => {
   //const [startFetch, setStartFetch] = useState(false);
   const { data } = useFetchData();
 
+  console.log(data);
   const exeleFactory = () => {
-    excelCreate(data);
+    if (data) {
+      excelCreate(data);
+    }
   };
 
   return (
